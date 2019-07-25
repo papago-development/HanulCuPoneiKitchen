@@ -8,11 +8,48 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <!--<h3>Ionic Menu Starter</h3>-->
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <!--<p>-->
+    <!--If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.-->
+  <!--</p>-->
+  <!--<ul>-->
+    <!--<li *ngFor="let order of orders | async">-->
+      <!--<pre>{{ order.mesaj }}</pre>-->
+      <!--<pre [ngClass]="{'alert' : timeexceeded > 20 }">{{order.oraComenzii}}</pre>-->
+    <!--</li>-->
+  <!--</ul>-->
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-list>
+    <ion-item-sliding *ngFor="let order of orders | async" >
+      <ion-item style="border-bottom: 4px solid grey !important" >
+        <ion-grid>
+          <ion-row align-items-center="">
+            <ion-col col-11="">
+              <pre class = " mymessage" [innerHTML] = order.mesaj></pre><br>
+              <pre [ngClass]="{'alert' : timeexceeded > 20 }">{{order.oraComenzii}}</pre>
+            </ion-col>
+            <ion-col col-1 align-items-center="" >
+              <div><h1>{{order.nrCrt}}</h1></div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <div><h1>{{order.createdAt.toMillis() | date:'yyyy/MM/dd h:mm:ss a'}}</h1></div>
+          </ion-row>
+        </ion-grid>
+
+
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="trash"></ion-icon>
+          Sterge
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="call"></ion-icon>
+          Suna
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
